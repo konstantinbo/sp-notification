@@ -1,0 +1,7 @@
+#!/bin/bash
+title=$(/home/konstantin/Documents/apps/sp eval | grep -P -o '(?<=SPOTIFY_TITLE=.).*?(?=")')
+artist=$(/home/konstantin/Documents/apps/sp eval | grep -P -o '(?<=SPOTIFY_ARTIST=.).*?(?=")')
+coverurl=$(/home/konstantin/Documents/apps/sp art)
+wget "$coverurl" -O "/home/konstantin/.icons/abcde.png"
+notify-send "$title" "$artist" -i abcde
+rm "/home/konstantin/.icons/abcde.png"
