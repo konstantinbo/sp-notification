@@ -5,7 +5,7 @@ title=$(/home/konstantin/Documents/apps/sp eval | grep -P -o '(?<=SPOTIFY_TITLE=
 artist=$(/home/konstantin/Documents/apps/sp eval | grep -P -o '(?<=SPOTIFY_ARTIST=.).*?(?=")')
 coverurl=$(/home/konstantin/Documents/apps/sp art)
 #store recent cover url for caching
-file="url.txt"
+file="/tmp/url.txt"
 #reads first line from the file
 cache=$(head -n 1 $file)
 
