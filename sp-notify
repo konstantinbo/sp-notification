@@ -1,7 +1,19 @@
 #!/bin/bash
+
+# -P needed for lookbehind
 title=$(/home/konstantin/Documents/apps/sp eval | grep -P -o '(?<=SPOTIFY_TITLE=.).*?(?=")')
 artist=$(/home/konstantin/Documents/apps/sp eval | grep -P -o '(?<=SPOTIFY_ARTIST=.).*?(?=")')
 coverurl=$(/home/konstantin/Documents/apps/sp art)
-wget "$coverurl" -O "/home/konstantin/.icons/abcde.png"
-notify-send "$title" "$artist" -i abcde
-rm "/home/konstantin/.icons/abcde.png"
+#store recent cover url for caching
+file="url.txt"
+#reads first line from the file
+cache=$(head -n 1 $file)
+
+#update the cover and cache for each new song
+if [ "$coverurl" != "$cache" ]; then
+  echo "$coverurl" > $file
+  rm "/home/konstantin/.icons/sp-cover.png"
+  wget "$coverurl" -O "/home/konstantin/.icons/sp-cover.png"
+fi
+
+notify-send "$title" "$artist" -i sp-cover
