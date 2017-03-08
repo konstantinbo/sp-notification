@@ -1,0 +1,10 @@
+#!/bin/bash
+running=$(pacmd list-sink-inputs | grep -c 'state: RUNNING')
+if [ "$running" == 1 ]
+then
+  /home/konstantin/Documents/apps/sp pause
+  notify-send "Spotify paused" -i pause-icon
+else
+  /home/konstantin/Documents/apps/sp play
+  /home/konstantin/Documents/Github/sp-notification/sp-notify  
+fi
