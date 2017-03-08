@@ -2,7 +2,8 @@
 
 # -P needed for lookbehind
 title=$(/home/konstantin/Documents/apps/sp eval | grep -P -o '(?<=SPOTIFY_TITLE=.).*(?=")')
-artist=$(/home/konstantin/Documents/apps/sp eval | grep -P -o '(?<=SPOTIFY_ARTIST=.).*(?=")')
+artist=$(/home/konstantin/Documents/apps/sp eval | grep -P -o '(?<=SPOTIFY_ALBUMARTIST=.).*(?=")')
+album=$(/home/konstantin/Documents/apps/sp eval | grep -P -o '(?<=SPOTIFY_ALBUM=.).*(?=")')
 coverurl=$(/home/konstantin/Documents/apps/sp art)
 #store recent cover url for caching
 file="/tmp/url.txt"
@@ -15,5 +16,5 @@ if [ "$coverurl" != "$cache" ]; then
   rm "/home/konstantin/.icons/sp-cover.png"
   wget "$coverurl" -O "/home/konstantin/.icons/sp-cover.png"
 fi
-python /home/konstantin/Documents/scripts/notify.py "$title" "$artist"
+python /home/konstantin/Documents/scripts/notify.py "$title" "$artist" "$album"
 #notify-send "$title" "$artist" -i sp-cover

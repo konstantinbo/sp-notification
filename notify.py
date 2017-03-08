@@ -5,7 +5,7 @@ import urllib, subprocess, sys
 
 title = str(sys.argv[1])
 artist = str(sys.argv[2])
-
+album = str(sys.argv[3])
 #logic handled by calling bash script, left it maybe for future use
 '''
 p1 = Popen(["/home/konstantin/Documents/apps/sp", "eval"], stdout=PIPE)
@@ -41,9 +41,10 @@ if coverurl != cache:
 
 '''
 Notify.init("Spotify Notification")
+summary = artist + " - " + album
 notification = Notify.Notification.new(
     title,
-    artist)
+    summary)
 
 # Use GdkPixbuf to create the proper image type
 image = GdkPixbuf.Pixbuf.new_from_file("/home/konstantin/.icons/sp-cover.png")
