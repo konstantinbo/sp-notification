@@ -2,7 +2,7 @@
 
 # -P needed for lookbehind
 title=$(/home/konstantin/Documents/apps/sp eval | grep -P -o '(?<=SPOTIFY_TITLE=.).*(?=")')
-artist=$(/home/konstantin/Documents/apps/sp eval | grep -P -o '(?<=SPOTIFY_ALBUMARTIST=.).*(?=")')
+artist=$(/home/konstantin/Documents/apps/sp eval | grep -P -o '(?<=SPOTIFY_ARTIST=.).*(?=")')
 album=$(/home/konstantin/Documents/apps/sp eval | grep -P -o '(?<=SPOTIFY_ALBUM=.).*(?=")')
 coverurl=$(/home/konstantin/Documents/apps/sp art)
 #store recent cover url for caching
