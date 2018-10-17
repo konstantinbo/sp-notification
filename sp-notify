@@ -16,5 +16,5 @@ if [ "$coverurl" != "$cache" ]; then
   rm "/home/konstantin/.icons/sp-cover.png"
   wget "$coverurl" -O "/home/konstantin/.icons/sp-cover.png"
 fi
-python /home/konstantin/Documents/scripts/notify.py "$title" "$artist" "$album"
+python /home/konstantin/Documents/Github/sp-notification/notify.py "$title" "$artist" "$album"
 #notify-send "$title" "$artist" -i sp-cover

@@ -1,4 +1,7 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
+import gi
+gi.require_version('GdkPixbuf', '2.0')
+gi.require_version('Notify', '0.7')
 from gi.repository import Notify, GdkPixbuf
 #from subprocess import Popen, PIPE
 import urllib, subprocess, sys
