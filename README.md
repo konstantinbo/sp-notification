@@ -5,5 +5,4 @@ Best use would be binding them to 2 different global key shortcuts, I use &#8984
 
 Needs the following [script](https://gist.github.com/wandernauta/6800547) and `libnotify-bin` package for `notify-send` (only for the sp-pause-notification script) to work.
 
-Additionally it may be necerra to install the `gir1.2-notify-0.7` package via
-`sudo apt-get install gir1.2-notify-0.7
+Additionally it may be necessarry to install the `gir1.2-notify-0.7` package via `sudo apt-get install gir1.2-notify-0.7`

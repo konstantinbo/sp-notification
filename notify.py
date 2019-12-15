@@ -6,6 +6,11 @@ from gi.repository import Notify, GdkPixbuf
 #from subprocess import Popen, PIPE
 import urllib, subprocess, sys
 
+iconPath = r"/home/konsi/.icons/sp-cover.png"
+'''
+This script is called from sp-notify. It isn't supposed to be used on its own.
+'''
+
 title = str(sys.argv[1])
 artist = str(sys.argv[2])
 album = str(sys.argv[3])
@@ -50,7 +55,7 @@ notification = Notify.Notification.new(
     summary)
 
 # Use GdkPixbuf to create the proper image type
-image = GdkPixbuf.Pixbuf.new_from_file("/home/konstantin/.icons/sp-cover.png")
+image = GdkPixbuf.Pixbuf.new_from_file(iconPath)
 
 # Use the GdkPixbuf image
 notification.set_icon_from_pixbuf(image)

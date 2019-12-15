@@ -1,20 +1,28 @@
 #!/bin/bash
 
+#This script just shows the currently playing song from Spotify in a notification. It calls notify.py
+
 # -P needed for lookbehind
-title=$(/home/konstantin/Documents/apps/sp eval | grep -P -o '(?<=SPOTIFY_TITLE=.).*(?=")')
-artist=$(/home/konstantin/Documents/apps/sp eval | grep -P -o '(?<=SPOTIFY_ARTIST=.).*(?=")')
-album=$(/home/konstantin/Documents/apps/sp eval | grep -P -o '(?<=SPOTIFY_ALBUM=.).*(?=")')
-coverurl=$(/home/konstantin/Documents/apps/sp art)
+sp_location="~/Documents/scripts/sp"
+title=$(eval $sp_location eval | grep -P -o '(?<=SPOTIFY_TITLE=.).*(?=")')
+artist=$(eval $sp_location eval | grep -P -o '(?<=SPOTIFY_ARTIST=.).*(?=")')
+album=$(eval $sp_location eval | grep -P -o '(?<=SPOTIFY_ALBUM=.).*(?=")')
+coverurl=$(eval $sp_location art)
+echo $coverurl
 #store recent cover url for caching
 file="/tmp/url.txt"
+if [ ! -f $file ]; then
+  touch $file
+fi
 #reads first line from the file
 cache=$(head -n 1 $file)
 
 #update the cover and cache for each new song
 if [ "$coverurl" != "$cache" ]; then
+  echo "Setting new cover"
   echo "$coverurl" > $file
-  rm "/home/konstantin/.icons/sp-cover.png"
-  wget "$coverurl" -O "/home/konstantin/.icons/sp-cover.png"
+  # rm "/home/konstantin/.icons/sp-cover.png"
+  wget "$coverurl" -O ~/.icons/sp-cover.png
 fi
-python /home/konstantin/Documents/Github/sp-notification/notify.py "$title" "$artist" "$album"
+python ~/Documents/Github/sp-notification/notify.py "$title" "$artist" "$album"
 #notify-send "$title" "$artist" -i sp-cover

@@ -1,10 +1,13 @@
 #!/bin/bash
+
+# This script should toggle the playing state of spotify and additionally display a notification about its current state.
+
 running=$(pacmd list-sink-inputs | grep -c 'state: RUNNING')
 if [ "$running" == 1 ]
 then
-  /home/konstantin/Documents/apps/sp pause
+  ~/Documents/scripts/sp pause
   notify-send "Spotify paused" -i pause-icon
 else
-  /home/konstantin/Documents/apps/sp play
-  /home/konstantin/Documents/Github/sp-notification/sp-notify  
+  ~/Documents/scripts/sp play
+  ~/Documents/Github/sp-notification/sp-notify  
 fi
